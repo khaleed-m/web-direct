@@ -8,11 +8,11 @@ Copy `js/convai-tools.js` to your website.
 ### 2. **Change One Line**
 In `js/convai-tools.js`, change this line:
 ```javascript
-const AGENT_ID = 'agent_01jymq2txxfj8r8tb2rhjg282r';
+const AGENT_ID = 'agent_7301ke18m7djeaj9batg0drshgbw';
 ```
 To your actual ElevenLabs agent ID:
 ```javascript
-const AGENT_ID = 'your-agent-id-here';
+const AGENT_ID = 'agent_7301ke18m7djeaj9batg0drshgbw';
 ```
 
 ### 3. **Include in Your HTML**
