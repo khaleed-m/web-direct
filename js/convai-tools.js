@@ -49,28 +49,110 @@ function injectElevenLabsWidget() {
   // Listen for the widget's "call" event to inject client tools
   widget.addEventListener('elevenlabs-convai:call', (event) => {
     event.detail.config.clientTools = {
-      redirectToExternalURL: ({ url }) => {
-        console.log('redirectToExternalURL called with url:', url);
+      bookDemo: async ({ firstName, lastName, email, company, phone, industry, employees, useCase, message }) => {
+        console.log('bookDemo called with:', { firstName, lastName, email, company, phone, industry, employees, useCase, message });
         
-        // Build full URL - handles any base URL
-        let fullUrl = url;
-        if (!url.startsWith('http')) {
-          // Use custom base URL if provided, otherwise auto-detect
-          const baseUrl = BASE_URL || window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '');
-          fullUrl = `${baseUrl}${url.startsWith('/') ? '' : '/'}${url}`;
+        try {
+          const response = await fetch('/api/voice-demo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              firstName,
+              lastName,
+              email,
+              company,
+              phone,
+              industry,
+              employees,
+              useCase,
+              message
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (response.ok) {
+            return {
+              success: true,
+              message: result.message
+            };
+          } else {
+            return {
+              success: false,
+              message: result.message || 'Sorry, there was an error booking your demo. Please try again.'
+            };
+          }
+        } catch (error) {
+          console.error('Error booking demo:', error);
+          return {
+            success: false,
+            message: 'Sorry, there was a network error. Please check your connection and try again.'
+          };
         }
-        
-        console.log('Navigating to:', fullUrl);
-        
-        // Navigate based on config
-        if (OPEN_IN_NEW_TAB) {
-          window.open(fullUrl, '_blank', 'noopener,noreferrer');
-        } else {
-          window.location.href = fullUrl;
-        }
-      },
+      }
     };
   });
+
+  // Clean up chat messages by removing Agent tags
+  widget.addEventListener('elevenlabs-convai:message', (event) => {
+    setTimeout(() => {
+      // Try multiple selectors to find message content
+      const selectors = [
+        '[data-message-content]',
+        '.message-content', 
+        '.convai-message',
+        'div[role="log"] div',
+        'p', 'span', 'div'
+      ];
+      
+      selectors.forEach(selector => {
+        const messages = widget.shadowRoot?.querySelectorAll(selector) || widget.querySelectorAll(selector);
+        messages?.forEach(msg => {
+          if (msg.textContent && msg.textContent.includes('<Agent>')) {
+            msg.textContent = msg.textContent
+              .replace(/<Agent>/g, '')
+              .replace(/<\/Agent>/g, '')
+              .replace(/&lt;Agent&gt;/g, '')
+              .replace(/&lt;\/Agent&gt;/g, '')
+              .trim();
+          }
+          if (msg.innerHTML && msg.innerHTML.includes('Agent')) {
+            msg.innerHTML = msg.innerHTML
+              .replace(/<Agent>/g, '')
+              .replace(/<\/Agent>/g, '')
+              .replace(/&lt;Agent&gt;/g, '')
+              .replace(/&lt;\/Agent&gt;/g, '')
+              .trim();
+          }
+        });
+      });
+    }, 50);
+  });
+  
+  // Also clean on DOM mutations
+  const observer = new MutationObserver(() => {
+    setTimeout(() => {
+      const allText = widget.shadowRoot?.querySelectorAll('*') || widget.querySelectorAll('*');
+      allText?.forEach(el => {
+        if (el.textContent && el.textContent.includes('Agent')) {
+          el.textContent = el.textContent
+            .replace(/<Agent>/g, '')
+            .replace(/<\/Agent>/g, '')
+            .replace(/&lt;Agent&gt;/g, '')
+            .replace(/&lt;\/Agent&gt;/g, '')
+            .trim();
+        }
+      });
+    }, 100);
+  });
+  
+  if (widget.shadowRoot) {
+    observer.observe(widget.shadowRoot, { childList: true, subtree: true });
+  } else {
+    observer.observe(widget, { childList: true, subtree: true });
+  }
 
   // Attach widget to the DOM
   wrapper.appendChild(widget);

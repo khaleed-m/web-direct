@@ -1,34 +1,356 @@
 <!doctype html><html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Acme AI – Book a Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acme AI – Book Your Demo</title>
   <link rel="stylesheet" href="assets/style.css" />
-  <script src="js/convai-tools.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="booking.html">Book a Demo</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="ACME AI.png" alt="Acme AI Logo">
+        <span>Acme AI</span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="booking.html" class="btn-cta">Book a Demo</a>
+      </div>
+    </div>
   </nav>
 
-  <section class="section">
-    <h1>Schedule Your Demo</h1>
-    <!-- Cal inline embed code begins -->
-    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "quick-chat-15-minute-free-consultation", {origin:"https://app.cal.com"});
-
-      Cal.ns["quick-chat-15-minute-free-consultation"]("inline", {
-        elementOrSelector:"#my-cal-inline",
-        config: {"layout":"month_view"},
-        calLink: "xxxxxx",
-      });
-
-      Cal.ns["quick-chat-15-minute-free-consultation"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-      </script>
-      <!-- Cal inline embed code ends -->
+  <!-- Booking Hero -->
+  <section class="booking-hero">
+    <div class="container">
+      <div class="booking-hero-content">
+        <h1>Schedule Your Personalized Demo</h1>
+        <p>See Acme AI in action and discover how our voice agents can transform your customer service in just 30 minutes.</p>
+        <div class="demo-benefits">
+          <div class="benefit">
+            <i class="fas fa-clock"></i>
+            <span>30-minute session</span>
+          </div>
+          <div class="benefit">
+            <i class="fas fa-user-tie"></i>
+            <span>AI expert walkthrough</span>
+          </div>
+          <div class="benefit">
+            <i class="fas fa-chart-line"></i>
+            <span>Custom ROI analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Booking Form Section -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-container">
+        <div class="booking-form-wrapper">
+          <div class="form-header">
+            <h2>Book Your Demo</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours</p>
+          </div>
+          
+          <form class="booking-form" id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Business Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="company">Company Name *</label>
+                <input type="text" id="company" name="company" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry">
+                  <option value="">Select your industry</option>
+                  <option value="ecommerce">E-commerce & Retail</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="finance">Financial Services</option>
+                  <option value="realestate">Real Estate</option>
+                  <option value="saas">SaaS & Technology</option>
+                  <option value="education">Education</option>
+                  <option value="hospitality">Hospitality</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="employees">Company Size</label>
+                <select id="employees" name="employees">
+                  <option value="">Select company size</option>
+                  <option value="1-10">1-10 employees</option>
+                  <option value="11-50">11-50 employees</option>
+                  <option value="51-200">51-200 employees</option>
+                  <option value="201-1000">201-1000 employees</option>
+                  <option value="1000+">1000+ employees</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="useCase">Primary Use Case</label>
+              <select id="useCase" name="useCase">
+                <option value="">What's your main goal?</option>
+                <option value="customer-support">Customer Support Automation</option>
+                <option value="lead-qualification">Lead Qualification</option>
+                <option value="appointment-scheduling">Appointment Scheduling</option>
+                <option value="order-management">Order Management</option>
+                <option value="technical-support">Technical Support</option>
+                <option value="sales-assistance">Sales Assistance</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Tell us about your needs</label>
+              <textarea id="message" name="message" rows="4" placeholder="What challenges are you looking to solve? What's your current customer service setup?"></textarea>
+            </div>
+            
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <span class="checkmark"></span>
+                I'd like to receive updates about Acme AI products and services
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large btn-full">
+              <i class="fas fa-calendar-check"></i>
+              Schedule My Demo
+            </button>
+          </form>
+        </div>
+        
+        <div class="demo-info-sidebar">
+          <div class="info-card">
+            <h3><i class="fas fa-star"></i> What You'll Get</h3>
+            <ul class="info-list">
+              <li><i class="fas fa-check"></i> Live voice agent demonstration</li>
+              <li><i class="fas fa-check"></i> Custom use case walkthrough</li>
+              <li><i class="fas fa-check"></i> ROI calculation for your business</li>
+              <li><i class="fas fa-check"></i> Implementation timeline discussion</li>
+              <li><i class="fas fa-check"></i> Q&A with AI experts</li>
+              <li><i class="fas fa-check"></i> Free trial setup assistance</li>
+            </ul>
+          </div>
+          
+          <div class="info-card">
+            <h3><i class="fas fa-phone"></i> Prefer to Talk?</h3>
+            <div class="contact-options">
+              <div class="contact-option">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                  <strong>Call us directly</strong>
+                  <p>(555) 123-4567</p>
+                </div>
+              </div>
+              <div class="contact-option">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email us</strong>
+                  <p>demo@acmeai.com</p>
+                </div>
+              </div>
+              <div class="contact-option">
+                <i class="fas fa-comments"></i>
+                <div>
+                  <strong>Live chat</strong>
+                  <p>Available 24/7</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="info-card testimonial">
+            <div class="testimonial-content">
+              <p>"The demo was incredibly insightful. We saw immediate value and implemented Acme AI within a week. Our response times improved by 85%."</p>
+              <div class="testimonial-author">
+                <strong>Sarah Johnson</strong>
+                <span>VP of Customer Success, TechCorp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="trust-section">
+    <div class="container">
+      <p class="trust-text">Trusted by 10,000+ businesses worldwide</p>
+      <div class="trust-logos">
+        <div class="trust-logo">TechCorp</div>
+        <div class="trust-logo">GlobalBank</div>
+        <div class="trust-logo">HealthPlus</div>
+        <div class="trust-logo">RetailMax</div>
+        <div class="trust-logo">StartupHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thank You Modal -->
+  <div id="thankYouModal" class="thank-you-modal" style="display: none;">
+    <div class="modal-content">
+      <img src="thank-you.svg" alt="Thank You" class="thank-you-image">
+      <h2>Demo Request Submitted!</h2>
+      <p>Thank you for your interest in Acme AI. Our team will contact you within 24 hours to schedule your personalized demo.</p>
+      <button onclick="closeThankYouModal()" class="btn btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Form submission
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Simple validation
+      if (!data.firstName || !data.lastName || !data.email || !data.company) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(data.email)) {
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Show loading state
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scheduling...';
+      submitBtn.disabled = true;
+      
+      try {
+        // Submit to database
+        const response = await fetch('/api/submit-demo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            company: data.company,
+            phone: data.phone,
+            industry: data.industry,
+            employees: data.employees,
+            useCase: data.useCase,
+            message: data.message,
+            newsletter: data.newsletter === 'on'
+          })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+          showThankYouModal();
+          this.reset();
+        } else {
+          showNotification(result.error || 'Something went wrong. Please try again.', 'error');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        showNotification('Network error. Please check your connection and try again.', 'error');
+      } finally {
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Notification system
+    function showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    // Thank you modal functions
+    function showThankYouModal() {
+      document.getElementById('thankYouModal').style.display = 'flex';
+    }
+    
+    function closeThankYouModal() {
+      document.getElementById('thankYouModal').style.display = 'none';
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
-</html> 
+</html>

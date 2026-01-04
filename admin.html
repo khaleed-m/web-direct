@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme AI - Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #333;
+        }
+        
+        .header {
+            background: #374151;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #374151;
+        }
+        
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .leads-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: #f9fafb;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .refresh-btn {
+            background: #374151;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .refresh-btn:hover {
+            background: #1f2937;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-robot"></i> Acme AI - Admin Dashboard</h1>
+    </div>
+    
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalLeads">-</div>
+                <div class="stat-label">Total Leads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayLeads">-</div>
+                <div class="stat-label">Today's Leads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="weekLeads">-</div>
+                <div class="stat-label">This Week</div>
+            </div>
+        </div>
+        
+        <div class="leads-table">
+            <div class="table-header">
+                <h2>Demo Requests</h2>
+                <button class="refresh-btn" onclick="loadLeads()">
+                    <i class="fas fa-refresh"></i> Refresh
+                </button>
+            </div>
+            
+            <div id="tableContent">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading leads...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadLeads() {
+            try {
+                const response = await fetch('/api/leads');
+                const leads = await response.json();
+                
+                updateStats(leads);
+                renderTable(leads);
+            } catch (error) {
+                console.error('Error loading leads:', error);
+                document.getElementById('tableContent').innerHTML = 
+                    '<div class="no-data">Error loading data. Please try again.</div>';
+            }
+        }
+        
+        function updateStats(leads) {
+            const total = leads.length;
+            const today = new Date().toDateString();
+            const todayCount = leads.filter(lead => 
+                new Date(lead.created_at).toDateString() === today
+            ).length;
+            
+            const weekAgo = new Date();
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            const weekCount = leads.filter(lead => 
+                new Date(lead.created_at) >= weekAgo
+            ).length;
+            
+            document.getElementById('totalLeads').textContent = total;
+            document.getElementById('todayLeads').textContent = todayCount;
+            document.getElementById('weekLeads').textContent = weekCount;
+        }
+        
+        function renderTable(leads) {
+            if (leads.length === 0) {
+                document.getElementById('tableContent').innerHTML = 
+                    '<div class="no-data">No leads found.</div>';
+                return;
+            }
+            
+            const tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Company</th>
+                            <th>Phone</th>
+                            <th>Industry</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${leads.map(lead => `
+                            <tr>
+                                <td>${lead.firstName} ${lead.lastName}</td>
+                                <td>${lead.email}</td>
+                                <td>${lead.company}</td>
+                                <td>${lead.phone || '-'}</td>
+                                <td>${lead.industry || '-'}</td>
+                                <td>${new Date(lead.created_at).toLocaleDateString()}</td>
+                                <td>
+                                    <button class="delete-btn" onclick="deleteLead(${lead.id})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('tableContent').innerHTML = tableHTML;
+        }
+        
+        async function deleteLead(id) {
+            if (!confirm('Are you sure you want to delete this lead?')) return;
+            
+            try {
+                const response = await fetch(`/api/leads/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    loadLeads(); // Refresh the table
+                } else {
+                    alert('Error deleting lead');
+                }
+            } catch (error) {
+                console.error('Error deleting lead:', error);
+                alert('Error deleting lead');
+            }
+        }
+        
+        // Load leads on page load
+        loadLeads();
+        
+        // Auto-refresh every 30 seconds
+        setInterval(loadLeads, 30000);
+    </script>
+</body>
+</html>

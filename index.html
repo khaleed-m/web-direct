@@ -1,26 +1,335 @@
 <!doctype html><html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Acme AI – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acme AI – Revolutionary Voice Agent Platform</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
   <script src="js/convai-tools.js"></script>
+  <script src="js/clean-agent-tags.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="booking.html">Book a Demo</a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="ACME AI.png" alt="Acme AI Logo">
+        <span>Acme AI</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="booking.html" class="btn-cta">Book a Demo</a>
+      </div>
+    </div>
   </nav>
 
-  <section class="section">
-    <h1>Welcome to Acme AI</h1>
-    <p>Acme AI helps businesses automate customer conversations with state-of-the-art voice agents. Our technology delivers human-like interactions 24/7, ensuring your customers receive immediate, intelligent responses to their inquiries.</p>
-    
-    <p>Transform your customer service with AI-powered voice agents that understand context, handle complex queries, and provide personalized solutions. Whether you're a startup looking to scale your support or an enterprise seeking to reduce response times, our platform adapts to your needs.</p>
-    
-    <p>Our voice agents integrate seamlessly with your existing systems and can handle everything from basic FAQs to complex troubleshooting scenarios. With advanced natural language processing and continuous learning capabilities, our agents become more intelligent with every interaction.</p>
-    
-    <p>Join thousands of businesses that have already revolutionized their customer experience with Acme AI. Start your journey today and discover how intelligent voice automation can transform your customer service operations.</p>
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-content-wrapper">
+        <div class="hero-text-content">
+          <div class="hero-badge" data-aos="fade-up">
+            <i class="fas fa-robot"></i>
+            <span>We Just raised $5M to build the future of AI voice agents</span>
+          </div>
+          <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">AI Voice Agents made smarter for <span class="highlight">growing teams</span></h1>
+          <p class="hero-description" data-aos="fade-up" data-aos-delay="200">Deploy intelligent voice agents that deliver human-like conversations 24/7, reduce costs by 60%, and increase customer satisfaction instantly with advanced AI technology.</p>
+          <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-item">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">99.9%</span>
+              <span class="stat-label">Uptime</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Languages</span>
+            </div>
+          </div>
+          <a href="booking.html" class="btn-primary" data-aos="fade-up" data-aos-delay="400">Get Started</a>
+        </div>
+        <div class="hero-visual" data-aos="fade-left" data-aos-delay="500">
+          <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="AI Voice Technology" class="hero-image">
+            <div class="floating-card">
+              <div class="voice-indicator">
+                <div class="voice-wave active"></div>
+                <div class="voice-wave active"></div>
+                <div class="voice-wave active"></div>
+              </div>
+              <span>AI Agent Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Trust Logos -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-logos">
+        <div class="trust-logo">Polymath</div>
+        <div class="trust-logo">Capsule</div>
+        <div class="trust-logo">Lightbox</div>
+        <div class="trust-logo">Acme Corp</div>
+        <div class="trust-logo">Boltshift</div>
+        <div class="trust-logo">Sisyphus</div>
+        <div class="trust-logo">Luminous</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Why Choose Acme AI?</h2>
+        <p class="section-subtitle">Advanced AI technology that revolutionizes customer interactions</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Advanced AI Technology</h3>
+          <p>State-of-the-art natural language processing with GPT-4 integration that understands context, emotion, and intent.</p>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI Technology">
+          </div>
+        </div>
+        
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Lightning Fast Response</h3>
+          <p>Sub-second response times with 99.9% uptime guarantee. Your customers never wait for assistance.</p>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop" alt="Fast Response">
+          </div>
+        </div>
+        
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-plug"></i>
+          </div>
+          <h3>Seamless Integration</h3>
+          <p>One-click integration with 500+ platforms including Salesforce, HubSpot, Zendesk, and custom APIs.</p>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Integration">
+          </div>
+        </div>
+        
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Smart Analytics</h3>
+          <p>Real-time insights and performance metrics with AI-powered recommendations to optimize your strategy.</p>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Analytics">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text" data-aos="fade-right">
+          <h2>Built with AI Experts in Mind</h2>
+          <p>Our platform is designed by AI researchers and customer service professionals who understand the challenges of modern business communication.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="stat-number">95%</span>
+              <span class="stat-text">Customer Satisfaction</span>
+            </div>
+            <div class="about-stat">
+              <span class="stat-number">60%</span>
+              <span class="stat-text">Cost Reduction</span>
+            </div>
+          </div>
+          <a href="booking.html" class="btn-primary">Learn More</a>
+        </div>
+        <div class="about-visual" data-aos="fade-left">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=400&fit=crop" alt="Team collaboration">
+          <div class="about-overlay">
+            <div class="success-indicator">
+              <i class="fas fa-check-circle"></i>
+              <span>AI Training Complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Efficiency Section -->
+  <section class="efficiency-section">
+    <div class="container">
+      <h2>Efficiency, Engineered for Results</h2>
+      <p class="section-subtitle">Advanced AI technology that revolutionizes customer interactions</p>
+      
+      <div class="efficiency-grid">
+        <div class="efficiency-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop" alt="Assessment">
+          <div class="efficiency-overlay">
+            <div class="match-badge">Excellent Match ⭐</div>
+          </div>
+          <div class="card-content">
+            <h3>Assessment</h3>
+            <p>Advanced AI technology that understands context and provides intelligent matching for better hiring decisions.</p>
+          </div>
+        </div>
+        <div class="efficiency-card">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop" alt="Collaboration">
+          <div class="efficiency-overlay">
+            <div class="message-card">
+              <p>Hey Johnson,</p>
+              <p>After reviewing your application and speaking with you during the interview process, we are confident that your</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Collaboration</h3>
+            <p>Seamless team collaboration tools that enhance communication and streamline the entire recruitment workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recruiters Section -->
+  <section class="recruiters-section">
+    <div class="container">
+      <h2 data-aos="fade-up">Built with Recruiters in Mind</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
+      
+      <div class="recruiters-grid">
+        <div class="recruiter-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop" alt="Senior Recruiter">
+          <div class="recruiter-overlay">
+            <span class="hire-count">25 Hires / Month</span>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+        <div class="recruiter-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=400&fit=crop&crop=face" alt="HR Manager">
+          <div class="recruiter-overlay">
+            <span class="hire-count">4500$ / Month</span>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+        <div class="recruiter-card" data-aos="fade-up" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop" alt="Talent Acquisition">
+          <div class="recruiter-overlay">
+            <span class="hire-count">32 Hires / Month</span>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+        <div class="recruiter-card" data-aos="fade-up" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=400&fit=crop" alt="Recruitment Lead">
+          <div class="recruiter-overlay">
+            <span class="hire-count">12000$ / Month</span>
+          </div>
+          <div class="card-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="final-cta-section">
+    <div class="container">
+      <h2>Find the Right Talent—Fast and Right</h2>
+      <p>Advanced AI technology that revolutionizes recruitment and helps you discover the perfect candidates for your growing team.</p>
+      <a href="booking.html" class="btn-primary">Get Started</a>
+      
+      <!-- Dashboard Preview -->
+      <div class="dashboard-preview">
+        <div class="dashboard-header">
+          <div class="user-profile">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Rose">
+            <span>Rose</span>
+          </div>
+          <div class="dashboard-nav">
+            <span>Candidates</span>
+            <span>All Candidates</span>
+          </div>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search">
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <div class="sidebar">
+            <div class="sidebar-item active">
+              <i class="fas fa-users"></i>
+              <span>All Candidates</span>
+            </div>
+            <div class="sidebar-item">
+              <i class="fas fa-archive"></i>
+              <span>Archived</span>
+            </div>
+          </div>
+          <div class="main-content">
+            <div class="content-header">
+              <h3>Candidates</h3>
+              <div class="content-actions">
+                <button><i class="fas fa-plus"></i></button>
+                <button><i class="fas fa-filter"></i></button>
+                <button><i class="fas fa-sort"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Simple scroll animations
+    window.addEventListener('scroll', () => {
+      const cards = document.querySelectorAll('.feature-item, .about-visual, .hero-visual');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>
